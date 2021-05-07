@@ -2,7 +2,6 @@ import React from "react";
 import "./App.css";
 import { Button } from "./components/Button";
 import { Button0 } from "./components/Button";
-// import { ButtonOps } from "./components/Button";
 import { Input } from "./components/Input";
 import { ClearButton } from "./components/ClearButton";
 import * as math from "mathjs";
@@ -21,7 +20,11 @@ class App extends React.Component {
   };
 
   handleEqual = () => {
-    this.setState({ input: math.evaluate(this.state.input) });
+    try {
+      this.setState({ input: math.evaluate(this.state.input) });
+    } catch {
+      this.setState({ input: "ERROR" });
+    }
   };
 
   render() {
